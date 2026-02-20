@@ -102,3 +102,18 @@ All the code, database schema, and sample data are provided in this repository.
 **Important**: The clients are expecting a resolution quickly. Take your time to understand the system, but remember that data accuracy and privacy are critical in property management.
 
 Good luck!
+my Solution 
+Bug 1 (Cache Leakage)
+Start app: docker-compose up --build
+Login as Ocean Rentals → note revenue totals
+Login as Sunset Properties → note revenue totals
+Switch back rapidly (or open two browser tabs) and refresh
+ Each client should only ever see their own data, never the other's
+Bug 2 (Timezone)
+Compare the March revenue shown in the dashboard for Sunset Properties against the expected total
+Calculate manually: sum all March reservations using the property's local timezone
+ Dashboard total should match the local-timezone calculation
+Bug 3 (Floating Point)
+Add up individual reservation amounts shown on the frontend
+Compare exact sum to the displayed total
+ Totals should match to the cent with no rounding drift
